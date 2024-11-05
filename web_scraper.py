@@ -3,7 +3,15 @@ from bs4 import BeautifulSoup
 import csv
 
 
-
+price_classes = [
+            "projector_prices__price", 
+            "product-price", 
+            "price",
+            "price-amount",
+            "current-price",
+            "product-price-value",
+            "price price--listing"
+        ]
 
 
 
@@ -14,15 +22,33 @@ with open ("urls_to_scrap",'r',encoding= 'utf-8') as file:
         pass
 
 
-def open_website(url):
+def open_website(url,price_list):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
-    products = soup.find('strong', class_="projector_prices__price")
-    price = products.text.strip()
-    print("price: {}".format(price))
+    price_elements = soup.find_all(['strong', 'span', 'div'], class_=True)
+    for element in reversed(price_elements)and price_text[0].isdigit():
+            price_text = element.get_text(strip=True)
+            if any(currency in price_text for currency in ["$", "zł", "€"]):
+                print(f"price: {price_text}")
+                               
+
 
 
 
 
     
-open_website("XXX")
+open_website("https://flamberg.com.pl/pl/products/warhammer-40000-adepta-sororitas-aestred-thurga-reliquant-at-arms-189587",price_classes)
+#response = requests.get("https://strefamtg.pl/chaos-space-marines/106416-chaos-space-marines-chaos-lord-with-jump-pack.html")
+
+
+
+
+
+
+"""    for price_class in price_list:
+        try:
+            products = soup.find('strong', class_= price_class)
+            price = products.text.strip()
+            print("price: {}".format(price))
+        except:
+            print("not this class: {}".format(price_class))"""
