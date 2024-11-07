@@ -24,14 +24,21 @@ with open ("urls_to_scrap",'r',encoding= 'utf-8') as file:
 
 def open_website(url,price_list):
     response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    price_elements = soup.find_all(['strong', 'span', 'div'], class_=True)
-    for element in reversed(price_elements):
-            price_text = element.get_text(strip=True)
+    if response.status_code == 200:
+        
+        soup = BeautifulSoup(response.text, 'html.parser')
+        price_elements = soup.find_all(['strong', 'span', 'div'], class_=True)
+        for element in reversed(price_elements):
+                price_text = element.get_text(strip=True)
+                if "projector_shipping__price" in element:
+                    print("pass")
+                    pass
 
-            if any(currency in price_text for currency in ["$", "zł", "€", "PLN"])and price_text[0].isdigit():
-                print(f"price: {price_text}")
-                                            
+                elif any(currency in price_text for currency in ["$", "zł", "€", "PLN"])and price_text[0].isdigit():
+                    print(f"price: {price_text}")
+    else: 
+        print("URL dosent work")
+                                                
 
 
 
