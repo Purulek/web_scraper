@@ -31,7 +31,6 @@ def open_website(url,price_list):
         for element in reversed(price_elements):
                 price_text = element.get_text(strip=True)
                 if "projector_shipping__price" in element:
-                    print("pass")
                     pass
 
                 elif any(currency in price_text for currency in ["$", "zł", "€", "PLN"])and price_text[0].isdigit():
