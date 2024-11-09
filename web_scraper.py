@@ -3,15 +3,6 @@ from bs4 import BeautifulSoup
 import csv
 
 
-price_classes = [
-            "projector_prices__price", 
-            "product-price", 
-            "price",
-            "price-amount",
-            "current-price",
-            "product-price-value",
-            "price price--listing"
-        ]
 
 
 
@@ -22,7 +13,7 @@ with open ("urls_to_scrap",'r',encoding= 'utf-8') as file:
         pass
 
 
-def open_website(url,price_list):
+def open_website(url):
     response = requests.get(url)
     if response.status_code == 200:
         
@@ -44,18 +35,4 @@ def open_website(url,price_list):
 
 
     
-open_website("https://flamberg.com.pl/pl/products/warhammer-40000-adepta-sororitas-aestred-thurga-reliquant-at-arms-189587",price_classes)
-#response = requests.get("https://strefamtg.pl/chaos-space-marines/106416-chaos-space-marines-chaos-lord-with-jump-pack.html")
-
-
-
-
-"""response = requests.get("https://flamberg.com.pl/pl/products/warhammer-40000-adepta-sororitas-aestred-thurga-reliquant-at-arms-189587")
-soup = BeautifulSoup(response.text, 'html.parser')
-for price_class in price_classes:
-    try:
-        products = soup.find('strong', class_= price_class)
-        price = products.text.strip()
-        print("price: {}".format(price))
-    except:
-        print("not this class: {}".format(price_class))"""
+open_website("https://flamberg.com.pl/pl/products/warhammer-40000-adepta-sororitas-aestred-thurga-reliquant-at-arms-189587")
