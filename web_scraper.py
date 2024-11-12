@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import csv
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+
 
 
 
@@ -28,8 +26,7 @@ def open_website(url):
 
 
 
-    
-open_website("https://flamberg.com.pl/pl/products/warhammer-40000-adepta-sororitas-aestred-thurga-reliquant-at-arms-189587")
+
 with open ("urls_to_scrap",'r',encoding= 'utf-8') as file:
     for url in file.readlines():
         open_website(url)
