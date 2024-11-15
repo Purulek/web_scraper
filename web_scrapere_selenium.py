@@ -9,7 +9,7 @@ import requests
 
 
 options = Options()
-#options.add_argument("--headless")
+options.add_argument("--headless")
 options.add_argument("--inprivate")  
 driver = webdriver.Edge(options=options)
 
@@ -20,20 +20,15 @@ search_box = WebDriverWait(driver, 10).until(
 
 search_box.send_keys("Thousand Sons Magnus the Red")
 search_box.send_keys(Keys.RETURN)
-"""WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.CLASS_NAME, ".product-quantities__val--success"))  
-)
-first_product = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//h2[@class='product-miniature__title']/a"))
-)
-WebDriverWait(driver, 10).until(
-        EC.visibility_of_element_located((By.CSS_SELECTOR, "span.price")))
-first_product.click()"""
-product_meta_element = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH,".//meta[@itemprop='url']").get_attribute("content")
-        ))
 
-product_url = product_meta_element.get_attribute("content")
-print("Link do produktu:", product_url)
+
+current_url = driver.current_url
+
+
+
+with open ("urls_to_scrap", "w+",encoding= 'utf-8') as f:
+    f.write(current_url)
+
+
 
 
