@@ -4,10 +4,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.edge.options import Options
-import requests
 
 
 
+product = input("Which item do you want to compare prices for?")
 options = Options()
 options.add_argument("--headless")
 options.add_argument("--inprivate")  
@@ -18,7 +18,10 @@ search_box = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.NAME, "s"))
     )
 
-search_box.send_keys("Thousand Sons Magnus the Red")
+
+
+
+search_box.send_keys(product)
 search_box.send_keys(Keys.RETURN)
 
 
