@@ -9,13 +9,13 @@ from selenium.webdriver.edge.options import Options
 
 product = input("Which item do you want to compare prices for?")
 options = Options()
-options.add_argument("--headless")
+#options.add_argument("--headless")
 options.add_argument("--inprivate")  
 driver = webdriver.Edge(options=options)
 
-driver.get("https://strefamtg.pl")
+driver.get("https://flamberg.com.pl/")
 search_box = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.NAME, "s"))
+        EC.presence_of_element_located((By.XPATH, "//input[@name='text' and @placeholder='Wpisz czego szukasz']"))
     )
 
 
