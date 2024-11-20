@@ -58,22 +58,3 @@ def get_url (urls):
 
 
 get_url(urls)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""search_box = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.NAME, "s"))
-    )"""

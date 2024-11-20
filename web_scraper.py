@@ -5,11 +5,15 @@ from bs4 import BeautifulSoup
 
 
 def open_website(url):
+
+    # get website
     response = requests.get(url)
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
         price_elements = soup.find_all(['strong', 'span', 'div'], class_=True)
+        # geting price 
         for element in reversed(price_elements):
+                
                 price_text = element.get_text(strip=True)
                 if "projector_shipping__price" in element.get("class", []):
                     pass
