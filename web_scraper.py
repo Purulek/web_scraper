@@ -26,6 +26,4 @@ def open_website(url):
                                             
 
 
-with open ("urls_to_scrap.txt",'r',encoding= 'utf-8') as file:
-    for url in file.readlines():
-        open_website(url)
+

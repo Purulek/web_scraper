@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.edge.options import Options
 import os
 
-urls = ["https://flamberg.com.pl", 'https://strefamtg.pl']
+
 
 
 
@@ -57,4 +57,4 @@ def get_url (urls):
 
 
 
-get_url(urls)
+
