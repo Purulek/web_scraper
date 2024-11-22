@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 
 def open_website(url):
-
+    product_price = []
     # get website
     response = requests.get(url)
     if response.status_code == 200:
@@ -20,6 +20,7 @@ def open_website(url):
 
                 elif any(currency in price_text for currency in ["$", "zł", "€", "PLN"])and price_text[0].isdigit():
                     print(f"price: {price_text}")
+                    product_price.append(price_text)
                     break
     else: 
         print("URL dosent work")
