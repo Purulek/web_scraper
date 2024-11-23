@@ -17,6 +17,7 @@ def open_website(url):
                 price_text = element.get_text(strip=True)
                 if "projector_shipping__price" in element.get("class", []):
                     pass
+                
 
                 elif any(currency in price_text for currency in ["$", "zł", "€", "PLN"])and price_text[0].isdigit():
                     print(f"price: {price_text}")
